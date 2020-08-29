@@ -1,0 +1,16 @@
+[alias]
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(normal)%s%C(reset) %C(dim white)%an%C(reset) %C(dim blue)(%ar)%C (reset)'
+	lga = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(normal)%s%C(reset) %C(dim white)%an%C(reset) %C(dim blue)(%ar)%C (reset)' --all
+
+[user]
+	name = Joanna Doyle
+	email = jjadoyle@gmail.com
+    signingkey = 0xC014E4ECC9EC432F
+[pull]
+	rebase = false
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+[gpg]
+    program = gpg
