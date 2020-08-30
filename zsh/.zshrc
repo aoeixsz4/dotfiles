@@ -14,4 +14,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export GPG_TTY=$TTY
 
 # put splicehack in the path
-export PATH=$HOME/opt/splicehack:$PATH
+export PATH=$HOME/opt/spl:$PATH
+alias ls='ls --color=auto'
