@@ -31,6 +31,8 @@ fi
 
 # put splicehack in the path
 export PATH=$HOME/bin:$HOME/opt/spl:$PATH
+export RUST_BACKTRACE=1
+export RUST_LOG=debug
 alias ls='ls --color=auto'
 gh-clone () {
     git clone github:$*
