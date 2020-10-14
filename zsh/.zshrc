@@ -1,5 +1,6 @@
 # Just switch on Powerlevel10k for rxvt
-if [[ "$TERM" =~ '^rxvt' ]]; then
+OS=$(uname -s)
+if [[ "$TERM" =~ '^rxvt' ]] && [[ "$OS" == "Linux" ]]; then
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
     # Initialization code that may require console input (password prompts, [y/n]
     # confirmations, etc.) must go above this block; everything else may go below.
@@ -30,7 +31,7 @@ else
 fi
 
 # put splicehack in the path
-export PATH=$HOME/bin:$HOME/opt/spl:$PATH
+export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 export RUST_BACKTRACE=1
 export RUST_LOG=debug
 alias ls='ls --color=auto'

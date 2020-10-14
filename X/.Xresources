@@ -8,7 +8,5 @@ URxvt.clipboard.autocopy:	true
 URxvt.font:	xft:MesloLGS NF:size=10
 URxvt.foreground:	grey
 URxvt.geometry:	80x25
-URxvt.keysym.M-c:	perl:clipboard:copy
-URxvt.keysym.M-v:	perl:clipboard:paste
 URxvt.perl-ext-common:	selection-to-clipboard
 URxvt.scrollstyle: plain
