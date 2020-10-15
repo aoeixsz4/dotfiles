@@ -38,4 +38,6 @@ alias ls='ls --color=auto'
 gh-clone () {
     git clone github:$*
 }
-
+up-0x0 () {
+    curl -Ffile=@$* https://0x0.st/
+}
