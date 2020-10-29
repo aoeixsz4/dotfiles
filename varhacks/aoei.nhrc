@@ -1,0 +1,569 @@
+# junethack aoei
+
+# Config written by Joe Doyle <j.j.doyle@student.reading.ac.uk> July 2013
+
+# paranoid stuff for healers
+OPTIONS=paranoid_confirmation:all
+#BINDINGS=h:mh,j:mj,k:mk,l:ml,y:my,u:mu,b:mb,n:mn
+#well that didn't work... possible with screen but cba
+
+# Birth options
+OPTIONS=!legacy
+OPTIONS=mail
+OPTIONS=altmeta
+OPTIONS=align:chaotic
+OPTIONS=gender:female
+OPTIONS=role:wizard
+OPTIONS=race:elf
+OPTIONS=!bones
+OPTIONS=fruit:fafafa
+OPTIONS=pettype:none
+
+# Graphic display options
+OPTIONS=lit_corridor
+OPTIONS=color
+OPTIONS=!sparkle
+OPTIONS=hilite_pet
+OPTIONS=monsters:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@X'&;:~]
+OPTIONS=boulder:0
+OPTIONS=runmode:teleport
+OPTIONS=use_darkgray
+OPTIONS=windowtype:curses
+
+# Botl display line and message history window options, etc.
+OPTIONS=!showexp
+OPTIONS=!showscore
+OPTIONS=time
+OPTIONS=packorder:$")[%/=!?+(*`0_
+
+
+## Status colours does its thing here, needs testing and seeing how it goes..
+#STATUSCOLOR=hp%100:gray,hp%99:green,hp%66:yellow,hp%50:orange,hp%30:red,hp%15:red&inverse,hp%0:red&inverse&blink
+#STATUSCOLOR=pw%100:gray,pw%99:white,pw%66:blue,pw%30:magenta,pw%10:magenta&bold
+#STATUSCOLOR=burdened:yellow,stressed:orange,strained:red&bold,overtaxed:red&inverse,overloaded:red&inverse&blink
+#STATUSCOLOR=satiated:yellow,hungry:orange,weak:red&bold,fainting:red&inverse,fainted:red&inverse&blink
+#STATUSCOLOR=hallu:yellow,conf:orange,stun:red&bold,ill:magenta&bold&inverse,foodpois:red&inverse,slime:red&inverse
+#STATUSCOLOR=held:red&inverse,blind:blue&bold
+
+OPTIONS=hitpointbar
+# Ensure changes will be shown for a few turns after they happen.
+OPTIONS=statushilites:10
+
+# Always show gold as the proper color.
+OPTIONS=hilite_status:gold/always/yellow
+
+# Show when the character is Lawful, for some reason.
+OPTIONS=hilite_status:alignment/lawful/green&bold
+# the above line is equivalent to:
+OPTIONS=hilite_status:alignment/lawful/lightgreen
+
+# Show when XL changes.
+OPTIONS=hilite_status:experience-level/changed/white/cyan
+# the above line is equivalent to:
+OPTIONS=hilite_status:experience-level/changed/white/always/cyan
+
+# Specify multiple cutoffs for all ability scores.
+OPTIONS=hilite_status:characteristics/<5/red/>6/orange/>8/brown/>11/yellow/>13/green/>16/cyan/>18/lightblue
+
+# Hilight multiple encumbrance statuses.
+OPTIONS=hilite_status:carrying-capacity/burdened/yellow/stressed/orange
+
+# Percentage cutoffs for hitpoints.
+OPTIONS=hilite_status:hitpoints/100%/brightgreen
+OPTIONS=hilite_status:hitpoints/<100%/green
+OPTIONS=hilite_status:hitpoints/<60%/yellow
+OPTIONS=hilite_status:hitpoints/<40%/red
+
+
+# message history and menu displays
+OPTIONS=msg_window:reversed
+OPTIONS=msghistory:1000
+OPTIONS=sortloot:full
+
+# Cut down on unnecessary prompts / messages that slow the game down
+# Also make it easier to screw up by not paying attention
+OPTIONS=!cmdassist
+OPTIONS=!help
+OPTIONS=!news
+OPTIONS=!verbose
+OPTIONS=suppress_alert:3.4.3
+OPTIONS=!prayconfirm
+OPTIONS=confirm
+OPTIONS=!safe_pet
+OPTIONS=!rest_on_space
+OPTIONS=!autodig
+OPTIONS=autopickup
+OPTIONS=pickup_types:$?!/
+OPTIONS=pickup_burden:unencumbered
+
+# Death Options
+OPTIONS=scores:!t !a !o
+OPTIONS=!tombstone
+OPTIONS=disclose:-i -a -v -g -c
+
+
+###############################################
+## MESSAGE TYPES FOR GETTING RID OF THE SPAM ##
+### AND MAKING THE IMPORANT THINGS STAND OUT ##
+## MsgType stuff, need to look this up       ##
+###############################################
+
+# Test msgtype stop feature
+MSGTYPE=stop "As you kick the door, it crashes open!"
+MSGTYPE=stop "You hear someone cursing shoplifters."
+MSGTYPE=stop "A monster appears (from nowhere|around a spot near you(r displaced image)?)"
+MSGTYPE=stop "Monsters appear (from nowhere|around a spot near you(r displaced image)?)"
+
+## Useless spam
+MSGTYPE=hide "mysterious force prevents (you|the \w+) from teleporting"
+MSGTYPE=hide "\w+ is not affected."
+#MSGTYPE=hide "*poison doesn't seem to affect*"
+MSGTYPE=hide "A tower of flame erupts from the floor under the fire \w+!"
+MSGTYPE=hide "The fire \w+ is uninjured"
+MSGTYPE=hide "You caitiff!"
+
+# Portals and vibrating square
+MSGTYPE=stop "the Amulet of Yendor feels( very)? (warm|hot)"
+MSGTYPE=stop "weak trembling"
+MSGTYPE=stop "faint trembling"
+
+# I often don't notice Rodney for a turn or two...
+MSGTYPE=stop "A voice booms out"
+
+# Useful effects wearing off
+MSGTYPE=stop "beginning to feel more solid"
+MSGTYPE=stop "You feel yourself slowing down"
+
+## Delayed Instadeaths
+MSGTYPE=stop "The (couatl|(electric|giant) eel|kraken|\w+) swings (it|her|his|\w+)self around you!"
+MSGTYPE=stop "The python grabs you!"
+MSGTYPE=stop "You don't feel very well."
+MSGTYPE=stop "You are turning a little green."
+MSGTYPE=stop "Your limbs are getting oozy."
+MSGTYPE=stop "Your skin begins to peel away."
+MSGTYPE=stop "You are turning into a green slime."
+MSGTYPE=stop "You are slowing down."
+MSGTYPE=stop "Your limbs are stiffening."
+MSGTYPE=stop "It constricts your throat!"
+MSGTYPE=stop "You find it hard to breathe."
+MSGTYPE=stop "You're gasping for air."
+MSGTYPE=stop "Your blood is having trouble reaching your brain."
+MSGTYPE=stop "You can no longer breathe."
+MSGTYPE=stop "You're turning blue."
+MSGTYPE=stop "Your consciousness is fading."
+MSGTYPE=stop "You feel deathly sick."
+MSGTYPE=stop "You feel (even|much) worse."
+#Things that aren't dangerous by themselves but could kill you if you don't notice.
+MSGTYPE=stop "You fail to cast the spell correctly."
+MSGTYPE=stop "You don't have enough energy to cast that spell."
+MSGTYPE=stop "You see here a c(hi|o)ckatrice corpse."
+MSGTYPE=stop "You are beginning to feel weak."
+
+## Vaults
+#MSGTYPE=stop "You hear the footsteps of a guard on patrol."
+#MSGTYPE=stop "You hear someone counting money."
+
+## Vibrating Square
+MSGTYPE=stop "You feel a strange vibration under your (feet|hooves|belly|\w+)."
+MSGTYPE=stop "You feel a strange vibration beneath you."
+
+# I encourage people to use my menucolors! It's why I have a version and date.
+
+# eidocolors 1.11.0, 13:09 21 Mar 08
+# last minor:     compatibility with the new nethack.alt.org's GNU (not POSIX)
+#                   regex library
+
+OPTIONS=menucolors
+
+#########
+# B/U/C #
+#########
+#MENUCOLOR="^[a-zA-Z$] - "=white
+MENUCOLOR=" !C"=white
+MENUCOLOR=" !B"=white
+MENUCOLOR=" !UC"=white
+MENUCOLOR=" uncursed| UC?($| )"=white
+MENUCOLOR=" \([-0-9]+:[-0-9]+\)"=white
+MENUCOLOR=" [+-][0-9]"=white
+
+MENUCOLOR=" blessed| B($| )"=cyan
+MENUCOLOR=" cursed| C($| )"=red
+
+################
+# WATER SPORTS #
+################
+MENUCOLOR=" holy water"=cyan&bold
+MENUCOLOR=" blessed clear potion"=cyan&bold
+MENUCOLOR=" blessed potions? called water"=cyan&bold
+MENUCOLOR=" clear potions? named (holy|blessed|B)($| )"=cyan&bold
+MENUCOLOR=" potions? of water named (holy|blessed|B)($| )"=cyan&bold
+MENUCOLOR=" potions? called water named (holy|blessed|B)($| )"=cyan&bold
+MENUCOLOR=" unholy water"=orange
+MENUCOLOR=" cursed clear potion"=orange
+MENUCOLOR=" cursed potions? called water"=orange
+MENUCOLOR=" potions? called water named (unholy|cursed|C)($| )"=orange
+
+#################
+# FOOD CONDUCTS # thanks, teabing!
+#################
+# vegan
+MENUCOLOR="(food |cram |K-|C-)ration|gunyoki"=green&bold
+MENUCOLOR="lembas wafer|melon|carrot|tin .* spinach"=green&bold
+MENUCOLOR=" oranges?( named.*)?$"=green&bold
+MENUCOLOR=" pears?( named.*)?$"=green&bold
+MENUCOLOR=" apple|banana|kelp|eucalyptus|garlic|wolfsbane"=green&bold
+MENUCOLOR=" slime mold| pomegranate"=green&bold
+MENUCOLOR="(tin of )?(gelatinous cube|acid blob|quivering blob)( corpse)?"=green&bold
+MENUCOLOR="(tin of )?(blue|spotted|ochre) jelly( corpse)?"=green&bold
+MENUCOLOR="(tin of )?lichen|shrieker|violet fungus|(brown|yellow|green|red) mold( corpse)?"=green&bold
+
+# vegetarian
+MENUCOLOR="egg|pancake|fortune cookie|candy bar|royal jelly|cream pie|candle"=green
+MENUCOLOR="(tin of )?brown pudding|gray ooze( corpse)?"=green
+
+###########
+# GOODIES #
+###########
+MENUCOLOR=" bag .* holding"=magenta
+MENUCOLOR=" luck(stone)?($| )"=magenta
+MENUCOLOR=" wand .* wish(ing)?($| )"=magenta
+MENUCOLOR=" magic marker"=magenta
+MENUCOLOR=" magic lamp|lamp .* magic"=magenta
+MENUCOLOR=" unicorn horn[^[]*$"=magenta
+MENUCOLOR=" tinning kit"=magenta
+MENUCOLOR=" ring .* regen(eration)?($| )"=magenta
+MENUCOLOR=" ring .* conflict"=magenta
+MENUCOLOR=" ring .* (FA|free action)($| )"=magenta
+MENUCOLOR=" ring .* (TC|teleport control)($| )"=magenta
+MENUCOLOR=" ring .* lev(itation)?($| )"=magenta
+MENUCOLOR=" amulet .* (life ?saving|LS)($| )"=magenta
+MENUCOLOR=" amulet .* ref(lection)?($| )"=magenta
+MENUCOLOR=" c(o|hi)ckatrice (corpse|egg)"=magenta
+MENUCOLOR=" egg .* cockatrice"=magenta
+MENUCOLOR=" stethoscope"=magenta
+
+#instruments
+MENUCOLOR="tooled horn|fire horn|frost horn|horn .* (tooled|fire|frost)"=magenta
+MENUCOLOR=" harp"=magenta
+MENUCOLOR=" bugle"=magenta
+MENUCOLOR=" flute"=magenta
+
+#############
+# ARTIFACTS #
+#############
+#unaligned
+MENUCOLOR=" (Dragonbane|Fire Brand|Frost Brand|Ogresmasher|Trollsbane|Werebane)"=lightgreen
+
+#lawful normal, quest
+MENUCOLOR=" (Demonbane|Excalibur|Grayswandir|Snickersnee|Sunsword)"=lightgreen
+MENUCOLOR=" (Orb of Detection|Sceptre of Might|Magic Mirror of Merlin|Mitre of Holiness|Tsurugi of Muramasa)"=lightgreen
+
+#neutral normal, quest
+MENUCOLOR=" (Cleaver|Giantslayer|Magicbane|Mjollnir|Vorpal Blade)"=lightgreen
+MENUCOLOR=" (Heart of Ahriman|Staff of Aesculapius|Eyes of the Overworld|Platinum Yendorian Express Card|Orb of Fate|Eye of the Aethiopica)"=lightgreen
+
+#chaotic normal, quest
+MENUCOLOR=" (Grimtooth|Orcrist|Sting|Stormbringer)"=lightgreen
+MENUCOLOR=" (Longbow of Diana|Master Key of Thievery)"=lightgreen
+
+#invocation items
+MENUCOLOR=" (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=magenta&bold
+
+#raison d'etre
+MENUCOLOR=" Amulet of Yendor named"=magenta&bold
+
+##################
+# CURSED GOODIES #
+##################
+MENUCOLOR=" cursed.* bag .* holding"=red&bold
+MENUCOLOR=" cursed.* luck(stone)?($| )"=red&bold
+MENUCOLOR=" cursed.* unicorn horn"=red&bold
+MENUCOLOR=" cursed.* (Bell of Opening|silver bell|Candelabrum of Invocation|candelabrum|Book of the Dead|papyrus spellbook)"=red&bold
+
+
+#############
+# BAD STUFF #
+#############
+MENUCOLOR=" load(stone)?($| )"=red&underline
+
+##############################
+# WATCH OUT, BAG OF HOLDING! #
+##############################
+MENUCOLOR=" bag .* tricks"=blue&underline
+MENUCOLOR=" wand .*[^!]canc"=blue&underline
+MENUCOLOR=" wand .* vanish"=blue&underline
+
+################
+# SHINY THINGS #
+################
+MENUCOLOR=" gold piece"=yellow
+MENUCOLOR=" valuable"=brown
+MENUCOLOR=" gems? .* hard"=yellow
+
+#soft gems
+MENUCOLOR=" ([0-9]+|an?|gems? .*) (uncursed |cursed |blessed )?(dilithium|opal|garnet|jasper|agate|jet|obsidian|jade|citrine|chrysoberyl|amber|amethyst|fluorite|turquoise)(e?s)?( stones?| gems?| crystals?)?( named .*)?$"=brown
+
+#hard gems
+MENUCOLOR=" ([0-9]+|an?|gems?.*) (uncursed |cursed |blessed )?(diamond|rub(y|ies)|jacinth|sapphire|black opal|emerald|topaz|aquamarine)(e?s)?( stones?| gems?)?( named .*)?$"=yellow
+
+#######################
+# SPELL FAILURE RATES #
+#######################
+MENUCOLOR=" 0%"=white
+MENUCOLOR=" [1-9]%"=cyan
+MENUCOLOR=" [12][0-9]%"=cyan
+MENUCOLOR=" [3-6][0-9]%"=yellow
+MENUCOLOR=" 7[0-5]%"=yellow
+MENUCOLOR=" 7[6-9]%"=orange
+MENUCOLOR=" 8[0-9]%"=orange
+MENUCOLOR=" 9[0-9]%"=red
+MENUCOLOR=" 100%"=red
+
+###################
+# FORGOTTEN SPELL # thanks, Stevie
+###################
+MENUCOLOR="[a-zA-Z] - [a-zA-Z ]+ [0-9]\*   [a-z]+ +[0-9]+%"=magenta
+
+############
+# #ENHANCE # thanks itsblah
+############
+MENUCOLOR="^ +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=gray
+MENUCOLOR="^ *[a-z] - +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
+MENUCOLOR="^ +\* +[a-z -]+ +\[(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]$"=white
+MENUCOLOR="^ +"=gray
+# enhanceable if more potential
+
+################
+# FORCE COLORS #
+################
+# Some of these are subject to change !
+
+MENUCOLOR="\{R\}"=red
+MENUCOLOR="\{B\}"=blue
+MENUCOLOR="\{C\}"=cyan
+MENUCOLOR="\{G\}"=green
+MENUCOLOR="\{Y\}"=yellow
+MENUCOLOR="\{[MP]\}"=magenta
+MENUCOLOR="\{O\}"=orange
+MENUCOLOR="\{W\}"=white
+MENUCOLOR="\{L\}"=black
+MENUCOLOR="\{y\}"=gray
+MENUCOLOR="\{g\}"=lightgreen
+MENUCOLOR="\{b\}"=lightblue
+MENUCOLOR="\{[mp]\}"=lightmagenta
+MENUCOLOR="\{c\}"=lightcyan
+MENUCOLOR="\{N\}"=gray
+MENUCOLOR="\{X\}"=gray
+MENUCOLOR="\{x\}"=gray
+MENUCOLOR="\{U\}"=gray
+MENUCOLOR="\{I\}"=gray
+MENUCOLOR="\{K\}"=gray
+
+########################
+# LOOT/APPLY CONTAINER #
+########################
+MENUCOLOR=" is empty. Do what?"=gray
+MENUCOLOR="Put something into .*"=gray
+MENUCOLOR="Take something out of .*"=gray
+
+
+
+##########################
+# AUTOPICKUP REGEX RULES #
+##########################
+#OPTIONS=apexception_regex
+
+# as well as some general game specific stuff
+autopickup_exception="< named (.+ )?<\.?$"
+autopickup_exception="< called (.+ )?<\.?$"
+autopickup_exception=" named (.+ )?>\.?$"
+autopickup_exception=" called (.+ )?>\.?$"
+autopickup_exception=" named (.+ )?(empty|0)\b"
+
+
+## Some things to pick up while blinded
+autopickup_exception="<^(a|\d+) scrolls?\.?$"
+autopickup_exception="<^(a|\d+) potions?\.?$"
+autopickup_exception="<^a wand\.?$"
+autopickup_exception="<^a ring\.?$"
+autopickup_exception="<^a spellbook\.?$"					
+# do I raelly want to pickup books while blind?
+autopickup_exception="<^(a|\d+) rations?\.?$"
+
+
+## SCROLLS
+# in pickup-types and they're universally useful
+#
+### POTIONS
+# in pickup-types and nearly universally useful
+
+## WANDS
+# Always pick up unidentified wands
+# wands are now in pickup-types as they deserve, though there are some we don't want
+autopickup_exception=" wand (of|called) nothing\b"
+
+
+## AMULETS
+# Always pick up unidentified amulets
+autopickup_exception="< (circular|spherical|oval|triangular|pyramidal|square|concave|hexagonal|octagonal) amulet\b"
+
+autopickup_exception=" amulet (of|called) change\b"
+autopickup_exception=" amulet (of|called) ESP\b"
+autopickup_exception="< amulet (of|called) life saving\b"
+autopickup_exception=" amulet (of|called) magical breathing\b"
+autopickup_exception="< amulet (of|called) reflection\b"
+autopickup_exception=" amulet (of|called) restful sleep\b"
+autopickup_exception=" amulet (of|called) strangulation\b"
+autopickup_exception=" amulet (of|called) unchanging\b"
+autopickup_exception="< amulet (versus|called of vs) poison\b"
+
+
+## FOOD
+# Might keep vegan
+autopickup_exception="< cram rations?\.?$"
+autopickup_exception="< food rations?\.?$"
+autopickup_exception="< C-rations?\.?$"
+autopickup_exception="< K-rations?\.?$"
+autopickup_exception="< lembas wafers?\.?$"
+autopickup_exception="< oranges?\.?$"							
+# Fixed: his rule matched orange gem.
+autopickup_exception="< apples?\.?$"
+autopickup_exception="< carrots?\.?$"
+autopickup_exception="< bananas?\.?$"
+autopickup_exception="< melons?\.?$"
+autopickup_exception="< kelp\.?$"
+autopickup_exception="< eucalyptus( leaf)?\.?$"
+autopickup_exception="< cloves? of garlic\.?$"
+autopickup_exception="< sprigs? of wolfsbane\.?$"
+autopickup_exception="< rotted flesh(es)?\.?$"					
+# Fruit
+autopickup_exception="< pears?\b"
+autopickup_exception="< tin( of spinach)?\.?$"					
+# Pick up spinach or unknown tins
+
+
+## SPELLBOOKS
+# Always pick up inID'd (assuming wizard for this)
+#autopickup_exception="< (parchment|vellum|ragged|dog eared|mottled|stained) spellbook\b"
+#autopickup_exception="< (cloth|leather|white|pink|red|orange|yellow|velvet) spellbook\b"
+#autopickup_exception="< (light green|dark green|turquoise|cyan|light blue) spellbook\b"
+#autopickup_exception="< (dark blue|indigo|magenta|purple|violet|tan|plaid) spellbook\b"
+#autopickup_exception="< (light brown|dark brown|gray|wrinkled|dusty|bronze) spellbook\b"
+#autopickup_exception="< (copper|silver|gold|glittering|shining|dull|thin|thick) spellbook\b"
+# price ID'd ones are called $description $level
+#autopickup_exception="< spellbook called (parchment|vellum|ragged|dog eared|mottled|stained)\b"
+#autopickup_exception="< spellbook called (cloth|leather|white|pink|red|orange|yellow|velvet)\b"
+#autopickup_exception="< spellbook called (light green|dark green|turquoise|cyan|light blue)\b"
+#autopickup_exception="< spellbook called (dark blue|indigo|magenta|purple|violet|tan|plaid)\b"
+#autopickup_exception="< spellbook called (light brown|dark brown|gray|wrinkled|dusty|bronze)\b"
+#autopickup_exception="< spellbook called (copper|silver|gold|glittering|shining|dull|thin|thick)\b"
+# The most genuinely useful spells tend to be the lower level ones, as Pw is expensive
+
+autopickup_exception=" spellbook called \w+ [4-7]\b"
+
+
+## RINGS
+# Always pick up unidentified rings
+autopickup_exception="< (pearl|iron|twisted|steel|wire|engagement|shiny|bronze|brass) ring\b"
+autopickup_exception="< (copper|silver|gold|wooden|granite|opal|clay|coral|black onyx) ring\b"
+autopickup_exception="< (moonstone|tiger eye|jade|agate|topaz|sapphire|ruby|diamond|ivory|emerald) ring\b"
+# price ID is just a ring called $description $price
+autopickup_exception="< ring called (pearl|iron|twisted|steel|wire|engagement|shiny|bronze|brass)\b"
+autopickup_exception="< ring called (copper|silver|gold|wooden|granite|opal|clay|coral|black onyx)\b"
+autopickup_exception="< ring called (moonstone|tiger eye|jade|agate|topaz|sapphire|ruby|diamond|ivory|emerald)\b"
+
+
+## General issues of winning the game
+autopickup_exception=" cheap plastic imitation of the Amulet of Yendor\b"
+autopickup_exception="< the Amulet of Yendor\b"
+autopickup_exception="< silver bell\b"
+autopickup_exception="< the( blessed| (un)?cursed)?Bell of Opening\b"
+autopickup_exception="< candelabrum\b"
+autopickup_exception="< the( blessed| (un)?cursed)?Candelabrum of Invocation\b"
+autopickup_exception="< papyrus spellbook\b"
+autopickup_exception="< the( blessed| (un)?cursed)?Book of the Dead\b"
+#autopickup_exception="< candles?\b"	# will want 7 of these, note to self patch ap_trigers for one-shot/7 shot pickup exceptions
+
+
+## WEAPONS
+# Playing a fighter we want to hold all the ammunition
+autopickup_exception="< arrows?\b"
+autopickup_exception="< ya\b"
+autopickup_exception="< daggers?"
+autopickup_exception="< crossbow bolts?\b"
+autopickup_exception="< darts?\b"
+#autopickup_exception="< (cross)?bow\b"
+# Don't pick up cursed or rusty ammo though
+autopickup_exception=" (rusty|corroded|burnt|rotted|cursed) arrows?\b"
+autopickup_exception=" (rusty|corroded|burnt|rotted|cursed) ya\b"
+autopickup_exception=" (rusty|corroded|burnt|rotted|cursed) daggers?\b"
+autopickup_exception=" (rusty|corroded|burnt|rotted|cursed) crossbow bolts?\b"
+autopickup_exception=" (rusty|corroded|burnt|rotted|cursed) darts?\b"
+
+
+## TOOLS
+# And the first item we really want is a pick-axe
+#autopickup_exception="< (pick-axe|broad pick|dwarvish mattock)\b"
+#autopickup_exception="< (magic )?lamp( called magic)?\b"			
+# <3 <3 <3
+autopickup_exception="< magic marker\b"								
+# <3
+autopickup_exception=" magic marker( named .+?)? \(1:0\)\.?$"		
+# Cant recharve anymore
+autopickup_exception=" \([-0-9]+:-1\)$"								
+# Somethin got cancelled - useless now
+#autopickup_exception="< tooled horn\b"								
+# Rogue now has 0 problems
+#autopickup_exception="<^a (fire |frost )?horn\.?$"					
+# Zaps a few fire/frost bolts then reverts to a tooled horn
+#autopickup_exception="< (leather )?drum\b"							
+# Atonal but scares like a tooled horn
+#autopickup_exception="< (skeleton )?key\b"	# Locking and unlocking things, would you believe
+#autopickup_exception="< (lock pick|credit card)\b"	# Locking and unlocking things, would you believe
+#autopickup_exception="< stethoscope\b"								
+# Classic item
+#autopickup_exception="< expensive camera\b"							
+# Good for scaring AND blinding
+#autopickup_exception="< (towel|blindfold)\b"
+#autopickup_exception="< unicorn horn\b"
+#autopickup_exception="< bag\b"
+
+
+## ARMOUR
+## What about magical armour?
+#autopickup_exception="< (plumed|etched|crested|visored) helmet\b"
+#autopickup_exception="< (tattered cape|ornamental cope|opera cloak|piece of cloth)\b"
+#autopickup_exception="< (old|padded|riding|fencing) gloves\b"
+#autopickup_exception="< (mud|snow|riding|buckled|hiking|combat|jungle) boots\b"
+#autopickup_exception="< (hooded|dwarvish) cloak\b"					
+# money maybe?
+#autopickup_exception="< (jack|high )boots\b"						
+# 2 AC
+#autopickup_exception="< (low boots|walking shoes)\b"				
+# 1 AC
+#autopickup_exception="< (hard shoes|iron boots)\b"
+#autopickup_exception="< (hard hat|dwarvish iron helm)\b"
+
+
+## GEMS
+autopickup_exception="< (white|black|red|green|blue|yellow|orange|violet|yellowish brown) gems?\b"
+autopickup_exception="< gems? called (white|black|red|green|blue|yellow|orange|violet|yellowish brown) valuable( soft)?\b"
+autopickup_exception="< gems? called (white|black|red|green|blue|yellow|orange|violet|yellowish brown) hard\b"
+autopickup_exception=" gems? called (white|black|red|green|blue|yellow|orange|violet|yellowish brown) soft\b"
+autopickup_exception=" (called )?worthless (white|black|red|green|blue|yellow|orange|violet|yellowish brown) glass\b"
+
+BIND=M-a:adjust
+BIND=v:loot
+BIND=M-C:chat                                         
+BIND=M-a:adjust 
+BIND=M-c:name     
+BIND=M-d:dip      
+BIND=M-e:enhance
+BIND=M-f:force        
+BIND=M-i:invoke      
+BIND=M-j:jump       
+BIND=M-p:pray     
+BIND=M-s:sit
+BIND=M-u:untrap     
+BIND=M-X:twoweapon  
+
