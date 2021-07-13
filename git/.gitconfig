@@ -5,7 +5,8 @@
 [user]
 	name = Joanna Doyle
 	email = jjadoyle@gmail.com
-    signingkey = 0xC014E4ECC9EC432F
+#    signingkey = 0xC014E4ECC9EC432F
+    signingkey = 0x3C392FB3FD1F5AB9
 [pull]
 	rebase = false
 [commit]
